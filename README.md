@@ -1,5 +1,5 @@
 # Gravity-Forms-Address-Dropdowns-AddOn
-Create state and province dropdowns for International addresses in Gravity Forms.
+Create state and province dropdowns for International address fields in Gravity Forms.
 
 Prevent users from typing in incorrect variations of states or provinces. Important for proper lead tracking in some cases.
 
