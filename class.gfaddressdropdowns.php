@@ -7,10 +7,10 @@ class GFAddressDropdowns extends GFAddOn {
 	protected $_version = GF_ADDRESS_DROPDOWNS_VER;
 	protected $_min_gravityforms_version = '1.9.13';
 	protected $_slug = 'gfaddressdropdowns';
-	protected $_path = 'gf-address-dropdowns/gf-address-dropdowns.php';
+	protected $_path = 'gf-region-dropdowns/gf-region-dropdowns.php';
 	protected $_full_path = __FILE__;
-	protected $_title = 'Gravity Forms Address Dropdowns';
-	protected $_short_title = 'GF Address Dropdowns';
+	protected $_title = 'Gravity Forms Region Dropdowns';
+	protected $_short_title = 'Region Dropdowns';
 	private static $_instance = null;
 
 	public static function get_instance() {
@@ -25,9 +25,9 @@ class GFAddressDropdowns extends GFAddOn {
 		?>
 		This page appears in the Forms menu
 		<?php
-	}
+	}*/
 
-	public function form_settings_fields() {
+	public function form_settings_fields($form) {
 		return array(
 			array(
 				"title"  => "Simple Form Settings",
@@ -47,24 +47,37 @@ class GFAddressDropdowns extends GFAddOn {
 				)
 			)
 		);
-	}
+		}
 
 	public function plugin_settings_fields() {
 		return array(
-			array(
-				"title"  => "Simple Add-On Settings",
-				"fields" => array(
-					array(
-						"name"	=> "textbox",
-						"tooltip" => "This is the tooltip",
-						"label"   => "This is the label",
-						"type"	=> "text",
-						"class"   => "small"
-					)
-				)
-			)
-		);
-	}*/
+				array(
+					'title'	   => 'State / Province Format',
+					'description' => 'Format dropdowns using full state names (default) or abbreviations.',
+					'fields'	  => array(
+						 array(
+							 'type'		  => 'radio',
+							 'name'		  => 'stateformat',
+							 'label'		 => 'Format',
+							 'default_value' => 'Full Name',
+							 'horizontal'	=> true,
+							 'choices'	   => array(
+													array(
+														'name'   => 'fullname',
+														'tooltip'=> '',
+														'label'  => 'Full Name',
+														'value'  => 'fullname'
+													),
+													array(
+														'name'	=> 'abbreviations',
+														'tooltip' => '',
+														'label'   => 'Abbreviations',
+													),
+												),
+						),
+					 )
+			));
+	}
 
 	public function pre_init(){
 		parent::pre_init();
