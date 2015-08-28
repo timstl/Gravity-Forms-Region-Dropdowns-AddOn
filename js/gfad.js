@@ -15,12 +15,12 @@ jQuery(document).ready(function($)
 		var stateopts = '<option value="" selected="selected"></option>',
 			provopts = '<option value="" selected="selected"></option>';
 		
-		$.each(gfad_regions.states, function() {
-			stateopts += '<option value="' + this + '">' + this + '</option>';
+		$.each(gfad_regions.states, function(k, v) {
+			stateopts += '<option value="' + k + '">' + v + '</option>';
 		});
 
-		$.each(gfad_regions.provinces, function() {
-			provopts += '<option value="' + this + '">' + this + '</option>';
+		$.each(gfad_regions.provinces, function(k, v) {
+			provopts += '<option value="' + k + '">' + v + '</option>';
 		});
 		
 		/* display the proper region input */

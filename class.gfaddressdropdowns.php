@@ -52,14 +52,14 @@ class GFAddressDropdowns extends GFAddOn {
 	public function plugin_settings_fields() {
 		return array(
 				array(
-					'title'	   => 'State / Province Format',
-					'description' => 'Format dropdowns using full state names (default) or abbreviations.',
+					'title'	   => 'State Display Format',
+					'description' => 'Format dropdown DISPLAY using full state names (default) or abbreviations. This is the label seen by visitors using the dropdown.',
 					'fields'	  => array(
 						 array(
 							 'type'		  => 'radio',
-							 'name'		  => 'stateformat',
+							 'name'		  => 'statedisplayformat',
 							 'label'		 => 'Format',
-							 'default_value' => 'Full Name',
+							 'default_value' => 'fullname',
 							 'horizontal'	=> true,
 							 'choices'	   => array(
 													array(
@@ -72,6 +72,34 @@ class GFAddressDropdowns extends GFAddOn {
 														'name'	=> 'abbreviations',
 														'tooltip' => '',
 														'label'   => 'Abbreviations',
+														'value' => 'abbreviations'
+													),
+												),
+						),
+					 )
+			),
+				array(
+					'title'	   => 'State Value Format',
+					'description' => 'Format dropdown VALUES using full state names (default) or abbreviations. This is the value saved in submitted entries.',
+					'fields'	  => array(
+						 array(
+							 'type'		  => 'radio',
+							 'name'		  => 'statevalueformat',
+							 'label'		 => 'Format',
+							 'default_value' => 'fullname',
+							 'horizontal'	=> true,
+							 'choices'	   => array(
+													array(
+														'name'   => 'fullname',
+														'tooltip'=> '',
+														'label'  => 'Full Name',
+														'value'  => 'fullname'
+													),
+													array(
+														'name'	=> 'abbreviations',
+														'tooltip' => '',
+														'label'   => 'Abbreviations',
+														'value' => 'abbreviations'
 													),
 												),
 						),
@@ -105,8 +133,34 @@ class GFAddressDropdowns extends GFAddOn {
 		if (wp_script_is( 'gfad', 'enqueued' )) {
 			return; 
 		}
-		
-		$gfad = array('states' => GFCommon::get_us_states(), 'provinces' => GFCommon::get_canadian_provinces());
+
+		$states_full = GFCommon::get_us_states();
+		$provinces_full = GFCommon::get_canadian_provinces();
+		$states = array();
+		$provinces = array();
+
+		foreach ($states_full as $state_full) {
+			
+			$key = $state_full;
+			$value = $state_full;
+			
+			if ($this->get_plugin_setting('statevalueformat') == 'abbreviations') {
+				$key = GFCommon::get_us_state_code($state_full);
+			}
+			
+			if ($this->get_plugin_setting('statedisplayformat') == 'abbreviations') {
+				$value = GFCommon::get_us_state_code($state_full);
+			}
+			
+			$states[$key] = $value;
+		}
+					
+		foreach ($provinces_full as $prov_full) {
+			$provinces[$prov_full] = $prov_full;
+		}
+
+		$gfad = array('states' => $states, 'provinces' => $provinces);
+
 		wp_enqueue_script( 'gfad', $this->get_base_url() . '/js/gfad.js',  array('jquery'),  $this->_version, true);
 		wp_localize_script( 'gfad', 'gfad_regions', $gfad );
 	}
