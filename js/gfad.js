@@ -28,12 +28,21 @@ jQuery(document).ready(function($)
 			if (is_US($countryf)) {
 				$us.val($text.val());
 				$ca.val('');
+				$us.show();
+				$ca.hide();
+				$text.hide();
 			} else if (is_Canada($countryf)) {
 				$ca.val($text.val());
 				$us.val('');
+				$us.hide();
+				$ca.show();
+				$text.hide();
 			} else {
 				$ca.val('');
 				$us.val('');
+				$us.hide();
+				$ca.hide();
+				$text.show();
 			}
 		}
 		
@@ -49,12 +58,15 @@ jQuery(document).ready(function($)
 			if (is_US($countryf)) {
 				$us.show();
 				$ca.hide();
+				$text.hide();
 			} else if (is_Canada($countryf)) {
 				$ca.show();
 				$us.hide();
+				$text.hide();
 			} else {
 				$ca.hide();
 				$us.hide();
+				$text.show();
 			}			
 		}
 
@@ -82,7 +94,6 @@ jQuery(document).ready(function($)
 				var $address = $(this),
 					$statef = $address.find('.address_state'),
 					$statetext = $statef.children('input[type="text"]');
-				
 				/* Is there a text input for state? (International forms only) */
 				if ($statetext.length > 0) {					
 					/*
