@@ -104,6 +104,85 @@ class GFAddressDropdowns extends GFAddOn {
 												),
 						),
 					 )
+			),
+					array(
+					'title'	   => 'Extra US Territory Abbreviations',
+					'description' => '',
+					'fields'	  => array(
+						 array(
+							 'type'		  => 'checkbox',
+							 'name'		  => 'custompairs',
+							 'label'	  => '',
+							 'choices'	  => array(
+								 				array(
+													'name'   => 'custompairs[AA]',
+													'tooltip'=> '',
+													'label'  => 'AA',
+													'value'  => 'AA'
+												),
+								 				array(
+													'name'   => 'custompairs[AE]',
+													'tooltip'=> '',
+													'label'  => 'AE',
+													'value'  => 'AE'
+												),
+								 				array(
+													'name'   => 'custompairs[AP]',
+													'tooltip'=> '',
+													'label'  => 'AP',
+													'value'  => 'AP'
+												),
+								 				array(
+													'name'   => 'custompairs[AS]',
+													'tooltip'=> '',
+													'label'  => 'AS',
+													'value'  => 'AS'
+												),
+								 				array(
+													'name'   => 'custompairs[FM]',
+													'tooltip'=> '',
+													'label'  => 'FM',
+													'value'  => 'FM'
+												),
+								 				array(
+													'name'   => 'custompairs[GU]',
+													'tooltip'=> '',
+													'label'  => 'GU',
+													'value'  => 'GU'
+												),
+								 				array(
+													'name'   => 'custompairs[MH]',
+													'tooltip'=> '',
+													'label'  => 'MH',
+													'value'  => 'MH'
+												),
+								 				array(
+													'name'   => 'custompairs[MP]',
+													'tooltip'=> '',
+													'label'  => 'MP',
+													'value'  => 'MP'
+												),
+								 				array(
+													'name'   => 'custompairs[PW]',
+													'tooltip'=> '',
+													'label'  => 'PW',
+													'value'  => 'PW'
+												),
+								 				array(
+													'name'   => 'custompairs[PR]',
+													'tooltip'=> '',
+													'label'  => 'PR',
+													'value'  => 'PR'
+												),
+								 				array(
+													'name'   => 'custompairs[VI]',
+													'tooltip'=> '',
+													'label'  => 'VI',
+													'value'  => 'VI'
+												)
+											)
+						),
+					 )
 			));
 	}
 
@@ -154,10 +233,22 @@ class GFAddressDropdowns extends GFAddOn {
 			
 			$states[$key] = $value;
 		}
+		
+		$extra_states = $this->get_plugin_setting('custompairs');
+		if (!empty($extra_states)) { 
+			foreach ($extra_states as $key=>$value) {
+				if ($value == 1) {
+					$states[$key] = $key;
+				}
+			}
+		}
 					
 		foreach ($provinces_full as $prov_full) {
 			$provinces[$prov_full] = $prov_full;
 		}
+		
+		asort($states);
+		asort($provinces);
 
 		$gfad = array('states' => $states, 'provinces' => $provinces);
 
