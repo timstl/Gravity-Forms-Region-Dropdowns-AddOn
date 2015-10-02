@@ -1,4 +1,4 @@
-=== Gravity Forms Region Dropdowns AddOn ===
+=== Region Dropdowns AddOn for Gravity Forms ===
 Contributors: timstl
 Donate link: 
 Tags: gravityforms, forms, regions
@@ -40,7 +40,10 @@ n/a
 
 == Changelog ==
 
-= 1.0.1 +
+= 1.0.2 =
+* Rename plugin to comply with naming restrictions of wordpress plugin directory.
+
+= 1.0.1 =
 * Readme update
 
 = 1.0 =

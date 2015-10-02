@@ -1,8 +1,8 @@
 <?php
 /*
- Plugin Name: Gravity Forms Region Dropdowns AddOn
+ Plugin Name: Region Dropdowns AddOn for Gravity Forms
  Description: Plugin to insert state and province dropdowns for US and CA into Gravity Forms international address fields.
- Version: 1.0.1
+ Version: 1.0.2
  Author: Atomicdust
  Author URI: http://atomicdust.com
  Text Domain: gf-address-dropdowns
