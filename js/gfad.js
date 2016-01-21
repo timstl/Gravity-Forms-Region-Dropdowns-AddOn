@@ -96,7 +96,8 @@
 				$(this).find('.has_state.has_country').each(function(i) {
 					var $address = $(this),
 						$statef = $address.find('.address_state'),
-						$statetext = $statef.children('input[type="text"]');
+						$statetext = $statef.children('input[type="text"]'),
+						tabindex = $statetext.attr('tabindex');
 					/* Is there a text input for state? (International forms only) */
 					if ($statetext.length > 0) {					
 						/*
@@ -106,8 +107,8 @@
 						var $countryf = $statef.closest('.has_country').find('.address_country > select');
 						if ($countryf.length > 0) {
 							/* create state dropdowns, set to variable. */
-							$('<select id="states_us_' + x + '_' + i + '" class="gfad_us">' + stateopts + '</select>').insertAfter($statetext);
-							$('<select id="states_us_' + x + '_' + i + '" class="gfad_ca">' + provopts + '</select>').insertAfter($statetext);
+							$('<select id="states_us_' + x + '_' + i + '" class="gfad_us" tabindex="' + tabindex + '>' + stateopts + '</select>').insertAfter($statetext);
+							$('<select id="states_us_' + x + '_' + i + '" class="gfad_ca" tabindex="' + tabindex + '>' + provopts + '</select>').insertAfter($statetext);
 							var $us = $statef.find('.gfad_us'),
 								$ca = $statef.find('.gfad_ca');
 							
