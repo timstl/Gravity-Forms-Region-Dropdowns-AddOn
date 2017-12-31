@@ -1,3 +1,5 @@
+This repository is no longer maintained. It's unlikely to work with Gravity Forms 2.x. If you'd like to use, please fork and update!
+
 # Gravity-Forms-Address-Dropdowns-AddOn
 Create state and province dropdowns for International address fields in Gravity Forms.
 
